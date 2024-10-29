@@ -25,7 +25,7 @@ l[[4]]
 ```
 
     ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-    ## -3.86477 -0.57133  0.05167  0.05568  0.72465  3.12405
+    ## -3.41470 -0.68983 -0.11469 -0.06646  0.59677  3.25634
 
 Make a list that’s hopefully a bit more useful.
 
@@ -41,10 +41,10 @@ list_norms =
 list_norms[['b']]
 ```
 
-    ##  [1]  2.1843686  3.7316502  1.1546451  2.8313743 11.0432478  5.7938454
-    ##  [7]  4.0250208 -0.9449351  5.1578291 10.1090393 -0.3718920  4.5205245
-    ## [13]  5.1321408  6.0716081  8.6013174  6.1249606 -5.5382957  7.7737380
-    ## [19]  2.0982104 13.9048629
+    ##  [1] -4.12758831 -0.18909109  5.32351664  0.02746779  4.74371121  9.20346714
+    ##  [7]  4.75606099  1.64404641  6.81046385 -3.43127259 -8.28597387  3.99949319
+    ## [13] -5.75344847 -0.18715095  1.89830027 12.19550479  7.98010735 -7.82092055
+    ## [19] -1.60954098  4.82328364
 
 Let’s reuse the funtion we wrote last time.
 
@@ -76,9 +76,9 @@ mean_and_sd(list_norms[["a"]])
 ```
 
     ## # A tibble: 1 × 2
-    ##     mean    sd
-    ##    <dbl> <dbl>
-    ## 1 -0.786  5.04
+    ##    mean    sd
+    ##   <dbl> <dbl>
+    ## 1 0.473  4.81
 
 ``` r
 mean_and_sd(list_norms[["b"]])
@@ -87,7 +87,7 @@ mean_and_sd(list_norms[["b"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.67  4.46
+    ## 1  1.60  5.65
 
 ``` r
 mean_and_sd(list_norms[["c"]])
@@ -96,7 +96,7 @@ mean_and_sd(list_norms[["c"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -3.22  12.7
+    ## 1 -1.98  9.76
 
 ``` r
 mean_and_sd(list_norms[["d"]])
@@ -105,7 +105,7 @@ mean_and_sd(list_norms[["d"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  1.13  11.3
+    ## 1 0.849  5.65
 
 ## Use a for loop
 
@@ -125,27 +125,27 @@ output
 
     ## [[1]]
     ## # A tibble: 1 × 2
-    ##     mean    sd
-    ##    <dbl> <dbl>
-    ## 1 -0.786  5.04
+    ##    mean    sd
+    ##   <dbl> <dbl>
+    ## 1 0.473  4.81
     ## 
     ## [[2]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.67  4.46
+    ## 1  1.60  5.65
     ## 
     ## [[3]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -3.22  12.7
+    ## 1 -1.98  9.76
     ## 
     ## [[4]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  1.13  11.3
+    ## 1 0.849  5.65
 
 ## Do the same thing
 
@@ -209,10 +209,10 @@ listcol_df %>%
 listcol_df[["samp"]][["a"]]
 ```
 
-    ##  [1]  0.53121781  3.30683950 -6.65649458 -0.25380763 -3.64183307 -7.11280036
-    ##  [7] -8.80607443 -2.85115521 -3.57420437  5.88449431  1.15787509  1.82199504
-    ## [13]  4.53446339  9.53006212  0.04018126  1.11822193 -0.32475395 -6.67651878
-    ## [19]  4.18463312 -7.92829856
+    ##  [1]  0.2391053 -4.6046005 -2.6777232 -7.2650707 -1.9855729 10.3184610
+    ##  [7] -2.8643874  2.1406793  5.1033706 -4.0088279  7.9019913  2.6116978
+    ## [13]  0.8720010  3.7071201  2.7207008 -0.4604199 -5.6014770  2.8099457
+    ## [19] -5.5197968  6.0271064
 
 Compute mean and sd
 
@@ -221,9 +221,9 @@ mean_and_sd(listcol_df[["samp"]][["a"]])
 ```
 
     ## # A tibble: 1 × 2
-    ##     mean    sd
-    ##    <dbl> <dbl>
-    ## 1 -0.786  5.04
+    ##    mean    sd
+    ##   <dbl> <dbl>
+    ## 1 0.473  4.81
 
 ``` r
 mean_and_sd(listcol_df[["samp"]][["b"]])
@@ -232,7 +232,7 @@ mean_and_sd(listcol_df[["samp"]][["b"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.67  4.46
+    ## 1  1.60  5.65
 
 ``` r
 mean_and_sd(listcol_df[["samp"]][["c"]])
@@ -241,7 +241,7 @@ mean_and_sd(listcol_df[["samp"]][["c"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -3.22  12.7
+    ## 1 -1.98  9.76
 
 ``` r
 mean_and_sd(listcol_df[["samp"]][["d"]])
@@ -250,7 +250,7 @@ mean_and_sd(listcol_df[["samp"]][["d"]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  1.13  11.3
+    ## 1 0.849  5.65
 
 ``` r
 map(listcol_df[['samp']], mean_and_sd)
@@ -258,27 +258,27 @@ map(listcol_df[['samp']], mean_and_sd)
 
     ## $a
     ## # A tibble: 1 × 2
-    ##     mean    sd
-    ##    <dbl> <dbl>
-    ## 1 -0.786  5.04
+    ##    mean    sd
+    ##   <dbl> <dbl>
+    ## 1 0.473  4.81
     ## 
     ## $b
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.67  4.46
+    ## 1  1.60  5.65
     ## 
     ## $c
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -3.22  12.7
+    ## 1 -1.98  9.76
     ## 
     ## $d
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  1.13  11.3
+    ## 1 0.849  5.65
 
 ADD a list column!!
 
@@ -293,10 +293,10 @@ listcol_df %>%
     ## # A tibble: 4 × 4
     ##   name  samp         output             iqr
     ##   <chr> <named list> <named list>     <dbl>
-    ## 1 a     <dbl [20]>   <tibble [1 × 2]>  6.59
-    ## 2 b     <dbl [20]>   <tibble [1 × 2]>  4.37
-    ## 3 c     <dbl [20]>   <tibble [1 × 2]> 16.9 
-    ## 4 d     <dbl [20]>   <tibble [1 × 2]> 12.1
+    ## 1 a     <dbl [20]>   <tibble [1 × 2]>  6.18
+    ## 2 b     <dbl [20]>   <tibble [1 × 2]>  7.01
+    ## 3 c     <dbl [20]>   <tibble [1 × 2]> 14.5 
+    ## 4 d     <dbl [20]>   <tibble [1 × 2]>  9.52
 
 ``` r
 listcol_df %>% 
@@ -311,10 +311,10 @@ listcol_df %>%
     ## # A tibble: 4 × 4
     ##   name    mean    sd   iqr
     ##   <chr>  <dbl> <dbl> <dbl>
-    ## 1 a     -0.786  5.04  6.59
-    ## 2 b      4.67   4.46  4.37
-    ## 3 c     -3.22  12.7  16.9 
-    ## 4 d      1.13  11.3  12.1
+    ## 1 a      0.473  4.81  6.18
+    ## 2 b      1.60   5.65  7.01
+    ## 3 c     -1.98   9.76 14.5 
+    ## 4 d      0.849  5.65  9.52
 
 ### NSDUH dataset
 
@@ -413,11 +413,22 @@ nsduh_table_format(nsduh_html, table_num = 5)
 ``` r
 nsduh_df = 
   tibble(
-    drug = c("marj", "cocaine", "heroine"),
+    drug = c("marj", "cocaine", "heroin"),
     table_num = c(1,4,5)
   ) %>% 
   mutate(
     table = map(table_num, nsduh_table_format, html = nsduh_html)
+  ) %>% 
+  unnest(table)
+
+#similar to lambda function to incorporate html within the actual nsduh_table_format function with backslash x
+nsduh_df = 
+  tibble(
+    drug = c("marj", "cocaine", "heroin"),
+    table_num = c(1,4,5)
+  ) %>% 
+  mutate(
+    table = map(table_num, \(x) nsduh_table_format(html = nsduh_html, table_num = x))
   ) %>% 
   unnest(table)
                                             
@@ -430,7 +441,153 @@ nsduh_df %>%
     ##   <chr>       <dbl> <chr>   <chr>            <chr>            <chr>             
     ## 1 marj            1 New Yo… 14.24b           15.04            13.94             
     ## 2 cocaine         4 New Yo… 2.28             2.54             0.71              
-    ## 3 heroine         5 New Yo… 0.38a            0.52             0.13              
+    ## 3 heroin          5 New Yo… 0.38a            0.52             0.13              
     ## # ℹ 7 more variables: `12-17(2014-2015)` <chr>, `18-25(2013-2014)` <chr>,
     ## #   `18-25(2014-2015)` <chr>, `26+(2013-2014)` <chr>, `26+(2014-2015)` <chr>,
     ## #   `18+(2013-2014)` <chr>, `18+(2014-2015)` <chr>
+
+## Another Example!!
+
+``` r
+weather_df = 
+  rnoaa::meteo_pull_monitors(
+    c("USW00094728", "USW00022534", "USS0023B17S"),
+    var = c("PRCP", "TMIN", "TMAX"), 
+    date_min = "2021-01-01",
+    date_max = "2022-12-31") |>
+  mutate(
+    name = recode(
+      id, 
+      USW00094728 = "CentralPark_NY", 
+      USW00022534 = "Molokai_HI",
+      USS0023B17S = "Waterhole_WA"),
+    tmin = tmin / 10,
+    tmax = tmax / 10) |>
+  select(name, id, everything())
+```
+
+    ## Registered S3 method overwritten by 'hoardr':
+    ##   method           from
+    ##   print.cache_info httr
+
+    ## using cached file: /Users/lizy_choi/Library/Caches/org.R-project.R/R/rnoaa/noaa_ghcnd/USW00094728.dly
+
+    ## date created (size, mb): 2024-10-29 11:14:06.133018 (8.656)
+
+    ## file min/max dates: 1869-01-01 / 2024-10-31
+
+    ## using cached file: /Users/lizy_choi/Library/Caches/org.R-project.R/R/rnoaa/noaa_ghcnd/USW00022534.dly
+
+    ## date created (size, mb): 2024-10-29 11:14:13.879521 (3.938)
+
+    ## file min/max dates: 1949-10-01 / 2024-10-31
+
+    ## using cached file: /Users/lizy_choi/Library/Caches/org.R-project.R/R/rnoaa/noaa_ghcnd/USS0023B17S.dly
+
+    ## date created (size, mb): 2024-10-29 11:14:16.775301 (1.039)
+
+    ## file min/max dates: 1999-09-01 / 2024-10-31
+
+Create a list column
+
+``` r
+weather_nest = 
+  weather_df %>% 
+  nest(data = date:tmin)
+```
+
+``` r
+#only Central Park data from df
+weather_nest[['data']][1]
+```
+
+    ## [[1]]
+    ## # A tibble: 730 × 4
+    ##    date        prcp  tmax  tmin
+    ##    <date>     <dbl> <dbl> <dbl>
+    ##  1 2021-01-01   157   4.4   0.6
+    ##  2 2021-01-02    13  10.6   2.2
+    ##  3 2021-01-03    56   3.3   1.1
+    ##  4 2021-01-04     5   6.1   1.7
+    ##  5 2021-01-05     0   5.6   2.2
+    ##  6 2021-01-06     0   5     1.1
+    ##  7 2021-01-07     0   5    -1  
+    ##  8 2021-01-08     0   2.8  -2.7
+    ##  9 2021-01-09     0   2.8  -4.3
+    ## 10 2021-01-10     0   5    -1.6
+    ## # ℹ 720 more rows
+
+Let’s try regressing tmax on tmin
+
+``` r
+lm(tmax ~ tmin, data = weather_nest[['data']][[1]])
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = weather_nest[["data"]][[1]])
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.514        1.034
+
+``` r
+lm(tmax ~ tmin, data = weather_nest[['data']][[2]])
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = weather_nest[["data"]][[2]])
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##     21.7547       0.3222
+
+``` r
+lm(tmax ~ tmin, data = weather_nest[['data']][[3]])
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = weather_nest[["data"]][[3]])
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.532        1.137
+
+``` r
+weather_nest %>% 
+  mutate(
+    model_fit = map(data, \(x) lm(tmax~tmin, data = x))
+  ) %>% 
+  pull(model_fit)
+```
+
+    ## [[1]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = x)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.514        1.034  
+    ## 
+    ## 
+    ## [[2]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = x)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##     21.7547       0.3222  
+    ## 
+    ## 
+    ## [[3]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = x)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.532        1.137
