@@ -3,7 +3,7 @@ title: "iteration and list columns"
 output: github_document
 ---
 
-```{r library loading}
+```{r library loading, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(rvest)
 ```
@@ -70,10 +70,146 @@ mean_and_sd(list_norms[["d"]])
 ```
 
 
+## Use a for loop
+
+Create output list, and run a for loop
+```{r}
+output = vector("list", length = 4)
+
+for (i in 1:4) {
+  
+  output[[i]] = mean_and_sd(list_norms[[i]])
+  
+}
+
+output
+```
+
+## Do the same thing
+
+but with  `map` instead
+
+```{r}
+#map(list,function)
+output = map(list_norms, mean_and_sd)
+#equivalent to the for loop above
+```
+
+let's do a couple of other things
+
+```{r}
+output = map(list_norms, mean_and_sd)
+#outputs in individual df
+
+output = map_dfr(list_norms, mean_and_sd)
+#simplifies the output into a more reader-friendly table
+
+output = map_dbl(list_norms, IQR)
+#simplifies the output into a more reader-friendly list
+```
+
+## List columns!!
+
+```{r}
+## easier organizational structure
+listcol_df = 
+  tibble(
+    name = c("a", "b", 'c', "d"),
+    samp = list_norms
+  )
+
+## can pipe easily as it is a dataframe structure
+listcol_df %>% 
+  filter(name %in% c("a","b"))
+
+listcol_df %>% 
+  select(-samp)
+```
+
+```{r}
+##This is also a list at the same time; can pull out columns of interest using list syntax
+listcol_df[["samp"]][["a"]]
+```
+
+Compute mean and sd
+
+```{r}
+mean_and_sd(listcol_df[["samp"]][["a"]])
+mean_and_sd(listcol_df[["samp"]][["b"]])
+mean_and_sd(listcol_df[["samp"]][["c"]])
+mean_and_sd(listcol_df[["samp"]][["d"]])
 
 
+map(listcol_df[['samp']], mean_and_sd)
 
 
+```
+
+ADD a list column!!
+
+```{r}
+listcol_df %>% 
+  mutate(
+    output = map(samp, mean_and_sd),
+    iqr = map_dbl(samp, IQR)
+  )
+
+listcol_df %>% 
+  mutate(
+    output = map(samp, mean_and_sd),
+    iqr = map_dbl(samp, IQR)
+  ) %>% 
+  select(-samp) %>% 
+  unnest(output)
+```
+
+### NSDUH dataset
+output a df by extracting df columns 1,4,5, and put everything into a single df
+
+This is a version of our function las time.
+```{r}
+
+nsduh_table_format = function (html, table_num){
+  out_table = 
+    html |> 
+    html_table() |> 
+    nth(table_num) |>
+    slice(-1) |> 
+    select(-contains("P Value"))
+  
+  return(out_table)
+}
+```
+
+
+We need to import html and then extract the corret tables. 
+```{r}
+nsduh_url = "http://samhda.s3-us-gov-west-1.amazonaws.com/s3fs-public/field-uploads/2k15StateFiles/NSDUHsaeShortTermCHG2015.htm"
+
+nsduh_html = read_html(nsduh_url)
+
+```
+
+
+```{r}
+nsduh_table_format(nsduh_html, table_num = 1)
+nsduh_table_format(nsduh_html, table_num = 4)
+nsduh_table_format(nsduh_html, table_num = 5)
+```
+```{r}
+nsduh_df = 
+  tibble(
+    drug = c("marj", "cocaine", "heroine"),
+    table_num = c(1,4,5)
+  ) %>% 
+  mutate(
+    table = map(table_num, nsduh_table_format, html = nsduh_html)
+  ) %>% 
+  unnest(table)
+                                            
+nsduh_df %>% 
+  filter(State == "New York")
+```
 
 
 
